@@ -35,4 +35,53 @@ The input file `parameters.txt` must be formatted as follows:
 1.0 10.0 0.01
 0.0 0.0 1.0 1.0 1.0
 1.0 0.0 0.0 25.0 1.0
+```
+## Output Format
+
+The output file `output.txt` records the positions and velocities of the bodies at each time step. Each line in the output contains:
+
+```plaintext
+body_index timestep x y x_velocity y_velocity
+```
+
+## How It Works
+
+1. **Class `nbody`**:  
+   The `nbody` class is defined in `nbody.h` and implemented in `nbody.cpp`. It handles:
+   - Reading input from `parameters.txt`.
+   - Computing gravitational forces and updating positions/velocities using the 4th-order Runge-Kutta method.
+   - Writing the simulation results to `output.txt`.
+
+2. **Key Methods**:
+   - `simulate()`: Iterates through time steps and computes the positions and velocities of all bodies using the Runge-Kutta 4th-order method.
+   - `computeAccX()` and `computeAccY()`: Compute the gravitational acceleration in the x and y directions for each body.
+   - `printFile()`: Outputs the computed positions and velocities to `output.txt`.
+
+## Compilation and Usage
+
+1. **Compile the code**:  
+   Use a standard C++ compiler to compile the program:
+
+   ```bash
+   g++ main.cpp nbody.cpp -o nbody_simulation
+   ```
+
+2. **Run the program**:  
+   Place the `parameters.txt` file in the same directory as the executable and run the program:
+
+   ```bash
+   ./nbody_simulation
+   ```
+   
+3. **Check the output**:  
+   The simulation results will be saved in `output.txt`, containing the positions and velocities of the bodies over time.
+
+## Additional Notes
+
+After you have obtained the `output.txt` file, you can plot the trajectory of the bodies using any programming language of your choice, such as Python or MATLAB. Popular libraries for plotting include:
+
+- **Python**: Use `matplotlib` to create 2D plots of the trajectories.
+- **MATLAB**: Utilize built-in plotting functions to visualize the motion of the bodies.
+
+These plots can help you analyze the motion and interactions of the celestial bodies over time.
 
